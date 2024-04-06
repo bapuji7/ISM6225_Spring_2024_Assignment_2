@@ -96,12 +96,24 @@ namespace ISM6225_Spring_2024_Assignment_2
         */
 
         public static int RemoveDuplicates(int[] nums)
-        {
+        { 
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
+                if (nums == null || nums.Length == 0)
                 return 0;
+
+                int k = 1;
+                for(int i = 1; i < nums.Length; i++)
+                {
+                    if (nums[i] != nums[i - 1])
+                    {
+                        nums[k] = nums[i];
+                        k++;
+                    }
+                }
+                return k;
             }
+
             catch (Exception)
             {
                 throw;
@@ -134,8 +146,20 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return new List<int>();
+                int index = 0;
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    if (nums[i] != 0)
+                    {
+                        nums[index++] = nums[i];
+                    }
+                }
+                for (int i = index; i < nums.Length; i++)
+                {
+                    nums[i] = 0;
+                }
+                return nums;
+
             }
             catch (Exception)
             {
@@ -185,8 +209,45 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return new List<IList<int>>();
+                IList<IList<int>> result = new List<IList<int>>();
+                Array.Sort(nums);
+                for (int s = 0; s < nums.Length - 2; s++)
+                {
+                    int toFind = -1 * nums[s];
+                    int l = s + 1;
+                    int r = nums.Length - 1;
+
+                    
+                    while (l < r)
+                    {
+                        int cur = nums[l] + nums[r];
+                        if (cur > toFind)
+                            r--;
+                        else if (cur < toFind)
+                            l++;
+                        else
+                        {
+                            int left = nums[l];
+                            int right = nums[r];
+                            result.Add(new List<int>() { nums[s], left, right });
+                            if (left == right)
+                                break;
+
+                            while (l < r && nums[l] == left)
+                                l++;
+
+                            while (l < r && nums[r] == right)
+                                r--;
+                        }
+                    }
+
+                    while (s < nums.Length - 2 && nums[s] == nums[s + 1])
+                        s++;
+                }
+
+                return result; 
+
+               
             }
             catch (Exception)
             {
@@ -220,8 +281,24 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return 0;
+                int maxCount = 0;
+                int currentCount = 0;
+
+                foreach (int num in nums)
+                {
+                    if (num == 1)
+                    {
+                        currentCount++;
+                        maxCount = Math.Max(maxCount, currentCount);
+                    }
+                    else
+                    {
+                        currentCount = 0;
+                    }
+                }
+
+                return maxCount;
+                
             }
             catch (Exception)
             {
@@ -256,8 +333,23 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return 0;
+                int decimalValue = 0;
+                int baseValue = 1; 
+
+                
+                while (binary > 0)
+                {
+                    int lastDigit = binary % 10; 
+                    binary /= 10; 
+
+                    
+                    decimalValue += lastDigit * baseValue;
+
+                    
+                    baseValue *= 2;
+                }
+
+                return decimalValue;
             }
             catch (Exception)
             {
@@ -294,8 +386,15 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return 0;
+                if (nums.Length < 2) return 0;
+                Array.Sort(nums);
+                int maxGap = 0;
+                for (int i = 1; i < nums.Length; i++)
+                {
+                    maxGap = Math.Max(maxGap, nums[i] - nums[i - 1]);
+                }
+                return maxGap;
+
             }
             catch (Exception)
             {
@@ -334,7 +433,14 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
+                Array.Sort(nums);
+                for (int i = nums.Length - 3; i >= 0; i--)
+                {
+                    if (nums[i] + nums[i + 1] > nums[i + 2])
+                    {
+                        return nums[i] + nums[i + 1] + nums[i + 2];
+                    }
+                }
                 return 0;
             }
             catch (Exception)
@@ -388,8 +494,12 @@ namespace ISM6225_Spring_2024_Assignment_2
         {
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
-                return "";
+                while (s.Contains(part))
+                {
+                    int index = s.IndexOf(part);
+                    s = s.Remove(index, part.Length);
+                }
+                return s;
             }
             catch (Exception)
             {
