@@ -1,5 +1,5 @@
 ﻿/* 
- 
+
 YOU ARE NOT ALLOWED TO MODIFY ANY FUNCTION DEFINIDTION's PROVIDED.
 WRITE YOUR CODE IN THE RESPECTIVE QUESTION FUNCTION BLOCK
 
@@ -48,13 +48,13 @@ namespace ISM6225_Spring_2024_Assignment_2
 
             //Question 6:
             Console.WriteLine("Question 6:");
-            int[] nums5 = { 3,6,9,1 };
+            int[] nums5 = { 3, 6, 9, 1 };
             int maxGap = MaximumGap(nums5);
             Console.WriteLine(maxGap);
 
             //Question 7:
             Console.WriteLine("Question 7:");
-            int[] nums6 = { 2,1,2 };
+            int[] nums6 = { 2, 1, 2 };
             int largestPerimeterResult = LargestPerimeter(nums6);
             Console.WriteLine(largestPerimeterResult);
 
@@ -96,14 +96,14 @@ namespace ISM6225_Spring_2024_Assignment_2
         */
 
         public static int RemoveDuplicates(int[] nums)
-        { 
+        {
             try
             {
                 if (nums == null || nums.Length == 0)
-                return 0;
+                    return 0;
 
                 int k = 1;
-                for(int i = 1; i < nums.Length; i++)
+                for (int i = 1; i < nums.Length; i++)
                 {
                     if (nums[i] != nums[i - 1])
                     {
@@ -218,7 +218,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                     int l = s + 1;
                     int r = nums.Length - 1;
 
-                    
+
                     while (l < r)
                     {
                         int cur = nums[l] + nums[r];
@@ -246,16 +246,16 @@ namespace ISM6225_Spring_2024_Assignment_2
                         s++;
                 }
 
-                return result; 
+                return result;
 
-               
+
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        // This code efficiently solves the 3Sum problem in O(n^2) time complexity by employing two-pointer technique and sorting. It maintains O(n) space complexity for the result list. However, it could enhance readability with clearer variable names.
+        // This code efficiently solves the 3Sum problem in O(n^2) time complexity by employing two-pointer technique and sorting. It maintains O(n) space complexity for the result list. H
         /*
 
         Question 4:
@@ -299,7 +299,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 }
 
                 return maxCount;
-                
+
             }
             catch (Exception)
             {
@@ -336,18 +336,18 @@ namespace ISM6225_Spring_2024_Assignment_2
             try
             {
                 int decimalValue = 0;
-                int baseValue = 1; 
+                int baseValue = 1;
 
-                
+
                 while (binary > 0)
                 {
-                    int lastDigit = binary % 10; 
-                    binary /= 10; 
+                    int lastDigit = binary % 10;
+                    binary /= 10;
 
-                    
+
                     decimalValue += lastDigit * baseValue;
 
-                    
+
                     baseValue *= 2;
                 }
 
