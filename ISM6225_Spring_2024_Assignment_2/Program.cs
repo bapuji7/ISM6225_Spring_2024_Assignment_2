@@ -119,7 +119,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
-
+        // This code efficiently removes duplicates from a sorted array in O(n) time complexity and O(1) space complexity. It iterates through the array once, maintaining a pointer to track the unique elements.
         /*
         
         Question 2:
@@ -166,6 +166,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
+        // This code moves all non-zero elements to the front of the array, then fills the remaining space with zeroes. It operates in O(n) time complexity, utilizing minimal additional space, effectively optimizing for both time and space constraints.
 
         /*
 
@@ -254,7 +255,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
-
+        // This code efficiently solves the 3Sum problem in O(n^2) time complexity by employing two-pointer technique and sorting. It maintains O(n) space complexity for the result list. However, it could enhance readability with clearer variable names.
         /*
 
         Question 4:
@@ -305,6 +306,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
+        // This code efficiently finds the maximum consecutive ones in an array, iterating once through the array with O(n) time complexity and using minimal additional space, adhering to constraints effectively.
 
         /*
 
@@ -357,6 +359,8 @@ namespace ISM6225_Spring_2024_Assignment_2
             }
         }
 
+        // This BinaryToDecimal method iterates through each digit of the binary number, converting it to decimal. Time complexity is O(log₂n) due to the while loop. Space complexity is O(1) as it only uses a constant amount of memory.
+
         /*
 
         Question:6
@@ -401,6 +405,7 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
+        // This code calculates the maximum gap between elements in a sorted integer array. It sorts the array and iterates to find the maximum gap. Time complexity is O(n log n) due to sorting, space complexity is O(1).
 
         /*
 
@@ -448,6 +453,8 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
+
+        // This code efficiently finds the largest perimeter of a triangle within a sorted array. Its time complexity is O(n log n) due to sorting, and space complexity is O(1), as it operates in constant space.
 
         /*
 
@@ -549,3 +556,4 @@ namespace ISM6225_Spring_2024_Assignment_2
         }
     }
 }
+// The "RemoveOccurrences" method removes all occurrences of a substring from a string. It operates in O(n*m) time complexity, where n is the length of the string and m is the length of the substring, and O(1) space complexity.
