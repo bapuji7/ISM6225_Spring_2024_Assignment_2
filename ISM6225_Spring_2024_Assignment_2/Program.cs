@@ -405,19 +405,53 @@ namespace ISM6225_Spring_2024_Assignment_2
         public static int MaximumGap(int[] nums)
         {
             try
-            {  // If the length of the array is less than 2, return 0 as there can be no gap.
-                if (nums.Length < 2) return 0;
-                // Sort the array in ascending order
-                Array.Sort(nums);
-                // Initialize a variable to hold the maximum gap found.
-                int maxGap = 0;
-                // Iterate through the sorted array to find the maximum gap between adjacent elements.
-                for (int i = 1; i < nums.Length; i++)
-                {   // Update maxGap if the difference between current and previous elements is greater.
-                    maxGap = Math.Max(maxGap, nums[i] - nums[i - 1]);
+            {   // Checking if the array contains less than 2 elements, return 0 in this case
+                if (nums.Length < 2)
+                    return 0;
+
+                //initializing the min and max values in array
+                int min = nums[0], max = nums[0];
+                //iterating  through the array to find the minimum and maximum values.
+                foreach (int num in nums)
+                {
+                    min = Math.Min(min, num);
+                    max = Math.Max(max, num);
                 }
-                // Return the maximum gap found.
+
+                // Calculate the interval size between each bucket
+                int bucketSize = Math.Max(1, (max - min) / (nums.Length - 1));
+                // // Determine the number of buckets needed based on the interval size
+                int numBuckets = (max - min) / bucketSize + 1;
+                // // Create an array of lists to represent the buckets
+                List<int>[] buckets = new List<int>[numBuckets];
+                for (int i = 0; i < numBuckets; i++)
+                {
+                    buckets[i] = new List<int>();
+                }
+                // Distribute the elements of the input array into their respective buckets
+                foreach (int num in nums)
+                {   // Calculate the index of the bucket for the current element
+                    int bucketIndex = (num - min) / bucketSize;
+                    // Add the current element to its corresponding bucket
+                
+                buckets[bucketIndex].Add(num);
+                }
+                // Iterate through the buckets to find the maximum difference between successive elements
+                int previousMax = min, maxGap = 0;
+                foreach (var bucket in buckets)
+                {
+                    if (bucket.Count == 0)
+                        continue; // Skip empty buckets
+                    // Find the minimum value in the current bucket
+                    int currentMin = bucket.Min();
+                    // Update maxGap if necessary
+                    maxGap = Math.Max(maxGap, currentMin - previousMax);
+                    // Update the previousMax for the next iteration
+                    previousMax = bucket.Max();
+                }
+                // Return the maximum difference between successive elements
                 return maxGap;
+
 
             }
             catch (Exception)
@@ -425,6 +459,8 @@ namespace ISM6225_Spring_2024_Assignment_2
                 throw;
             }
         }
+
+
         
 
         /*
